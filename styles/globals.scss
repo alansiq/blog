@@ -1,0 +1,36 @@
+
+@import './_var.scss';
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@500;600&family=Lustria&family=Hind+Guntur&display=swap');
+
+:root {
+  font-size: 18px;
+  @media (max-width: $md) {
+      font-size: 12px;
+  }
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  background-color: $bgblue;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: $paragraphfont;
+  color: $textcolor;
+}
+
+h1, h2,
+h3, h4,
+h5, h6 {
+  font-family: $headingfont;
+}
+
+
+p, span, small, a, button {
+  font-family: $paragraphfont;
+}
