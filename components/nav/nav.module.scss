@@ -33,3 +33,81 @@
 .active {
     color: $accentcolor;
 }
+
+
+
+// Mobile code
+.toggler {
+    display: none;
+}
+
+@media(max-width: $sm) {
+
+
+    .container {
+        flex-direction: column;
+        align-items: stretch;
+
+        .navlinks {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .navlinks, .social {
+            display: none;
+        }
+
+        .toggler {
+            position: absolute;
+            right: 0;
+    
+            height: 28px;
+            width: 28px;
+            
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        
+            div {
+                width: 100%;
+                height: 2px;
+                border-radius: 8px;
+                background: white;
+        
+                transition: all 0.2s;
+            }
+        }
+
+        &.expanded {
+
+            .navlinks, .social {
+                display: flex;
+            }
+
+            .social {
+                width: 100%;
+            }
+
+            .toggler {
+                
+                div:nth-child(1) {
+                    transform: rotate(45deg) translate(5px, 5px);
+                }
+                
+                div:nth-child(2) {
+                    display: none;
+                }
+            
+                div:nth-child(3) {
+                    transform: rotate(-45deg) translate(5px, -5px);
+                }
+            }
+
+        }
+    }
+
+    
+}
+
+

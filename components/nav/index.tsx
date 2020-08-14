@@ -1,16 +1,26 @@
 import styles from './nav.module.scss';
 import NavLink from '../Link';
-import React, { Children } from 'react'
+import React, { Children, useState, useEffect } from 'react';
 
-import {FaGithub, FaLinkedin, FaDribbble} from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaDribbble } from 'react-icons/fa';
 
 
 export default function Nav() {
 
+    const [menuIsExpanded, setMenuIsExpanded] = useState(false);
+
+
     return (
         <>
-            <nav className={styles.container}>
+            <nav className={menuIsExpanded ? `${styles.container} ${styles.expanded}` : `${styles.container}`}>
                 <h1 className={styles.logo}>Alan Siqueira</h1>
+
+                <div onClick={() => setMenuIsExpanded(!menuIsExpanded)} className={styles.toggler}>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+
                 <ul className={styles.navlinks}>
                     <li>
                         <NavLink activeClassName={styles.active} href='/'>
