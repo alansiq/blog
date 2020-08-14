@@ -45,8 +45,14 @@
 
 
     .container {
+        padding: 8px;
+
+        position: fixed;
         flex-direction: column;
+        gap: 32px;
         align-items: stretch;
+        height: 0%;
+        transition: all 0.2s;
 
         .navlinks {
             flex-direction: column;
@@ -56,14 +62,19 @@
 
         .navlinks, .social {
             display: none;
+            opacity: 0%;
+            transition: all 0.1s;
+            transition-delay: 1s;
         }
 
         .toggler {
             position: absolute;
-            right: 0;
+            right: 8px;
     
             height: 28px;
             width: 28px;
+
+
             
             display: flex;
             flex-direction: column;
@@ -80,13 +91,22 @@
         }
 
         &.expanded {
+            background-color: $richblack;
+            height: 100%;
 
             .navlinks, .social {
                 display: flex;
+                opacity: 100%;
+
             }
+        
 
             .social {
                 width: 100%;
+                align-self: center;
+                justify-content: center;
+
+                padding-bottom: 32px;
             }
 
             .toggler {
@@ -103,11 +123,6 @@
                     transform: rotate(-45deg) translate(5px, -5px);
                 }
             }
-
         }
     }
-
-    
 }
-
-
