@@ -10,10 +10,25 @@
 }
 
 html,
-body {
+body,
+#__next {
+  display: flex;
+  flex-direction: column;
+
   height: 100%;
-  width: 100%;
   background-color: $bgblue;
+}
+
+body {
+  align-items: center;
+}
+
+#__next {
+  width: 900px;
+}
+
+footer {
+  margin-top: auto;
 }
 
 * {
