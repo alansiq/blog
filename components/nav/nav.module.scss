@@ -1,14 +1,23 @@
 @import '../../styles/var';
 
 .container { 
+    position: fixed;
+    max-width: 940px;
+
     display: flex;
     height: 64px;
     justify-content: space-between;
     align-items: center;
     width: 100%;
 
+
+
     .logo {
         color: $textcolor;
+        cursor: pointer;
+        user-select: none;
+        transition: transform 0.05s;
+
         &::before {
             content: "< ";
             color: $accentcolor;
@@ -17,12 +26,22 @@
             content: " />";
             color: $accentcolor;
         }
+
+        &:hover {
+            transform: translateY(-4px);
+        }
+
+        &:active {
+            transform: translateY(0);
+        }
     }
 
     ul {
         display: flex;
         gap: 8px;
         list-style: none;
+
+        font-size: 1.2rem;
     }
 
     a {
@@ -30,9 +49,80 @@
     }
 }
 
-.active {
-    color: $accentcolor;
+
+.navlink {
+    font-family: $headingfont;
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 0%;
+        bottom: -8px;
+        left: 50%;
+
+        height: 2px;
+
+        transition: all 0.2s;
+    }
+
+    &:hover {
+
+        &::before {
+            width: 100%;
+            background-color: $accentcolor;
+            left: 0;
+
+        }
+    }
 }
+
+.active {
+    &::before {
+        width: 100%;
+        left: 0;
+        background-color: $accentcolor;
+    }
+}
+
+.bloglink {
+
+    &.hasNewPosts {
+        &::after {
+            content: '';
+            position: absolute;
+            background-color: $accentcolor;
+            color: $textcolor;
+            padding: 4px;
+            border-radius: 50%;
+        }
+    }
+
+    /* FOR DEVELOPMENT ONLY, REMOVE ON PRODUCTION */ 
+    &::after {
+        content: '';
+        position: absolute;
+        background-color: $accentcolor;
+        color: $textcolor;
+        padding: 4px;
+        border-radius: 50%;
+    }
+}
+
+.social {
+
+    li {
+        transition: all 0.1s;
+        &:hover {
+            transform: scale(1.1);
+            svg {
+            fill: $accentcolor !important;
+            }
+        }
+    }
+
+}
+
 
 
 
