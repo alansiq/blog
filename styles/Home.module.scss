@@ -36,7 +36,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap-reverse;
 
     max-width: 940px;
     
@@ -54,6 +53,11 @@
             color: $accentcolor;
         }
     }
+
+    @media (max-width: $lg) {
+        flex-wrap: wrap-reverse;
+    }
+
     @media (max-width: $sm) {
         padding: 8px;
         

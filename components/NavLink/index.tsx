@@ -6,6 +6,7 @@ interface LinkProps {
   activeClassName: string;
   className ?: string;
   children ?: any;
+  onClick ?: any;
 }
 
 const NavLink = (props: LinkProps) => {
@@ -22,7 +23,7 @@ const NavLink = (props: LinkProps) => {
   return (
     
     <Link href={props.href}>
-      <a className={classList}>
+      <a onClick={props.onClick} className={classList}>
         {props.children}
       </a>
     </Link>

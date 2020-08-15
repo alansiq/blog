@@ -1,7 +1,7 @@
 import styles from './nav.module.scss';
 import NavLink from '../NavLink';
 import Link from 'next/link';
-import React, { Children, useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import { FaGithub, FaLinkedin, FaDribbble } from 'react-icons/fa';
 
@@ -15,7 +15,7 @@ export default function Nav() {
         <>
             <nav className={menuIsExpanded ? `${styles.container} ${styles.expanded}` : `${styles.container}`}>
                 <h1 className={styles.logo}> 
-                    <Link href="/">Alan Siqueira</Link>
+                    <Link href="/"><a>Alan Siqueira</a></Link>
                 </h1>
 
                 <div onClick={() => setMenuIsExpanded(!menuIsExpanded)} className={styles.toggler}>
@@ -26,17 +26,17 @@ export default function Nav() {
 
                 <ul className={styles.navlinks}>
                     <li>
-                        <NavLink className={styles.navlink} activeClassName={styles.active} href='/'>
+                        <NavLink onClick={() => setMenuIsExpanded(false)} className={styles.navlink} activeClassName={styles.active} href='/'>
                             Home
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink className={styles.navlink} activeClassName={styles.active} href='/work'>
+                        <NavLink onClick={() => setMenuIsExpanded(false)} className={styles.navlink} activeClassName={styles.active} href='/work'>
                             My Work
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink className={`${styles.navlink} ${styles.bloglink}`} activeClassName={styles.active} href='/blog'>
+                        <NavLink onClick={() => setMenuIsExpanded(false)} className={`${styles.navlink} ${styles.bloglink}`} activeClassName={styles.active} href='/blog'>
                             Blog
                         </NavLink>
                     </li>
