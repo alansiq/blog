@@ -1,0 +1,73 @@
+@import './var';
+
+.HeroContainer {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    max-width: 100%;
+    width: 100%;
+
+    background: $bggradient;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    .tsparticles {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        z-index: -1;
+        height: 100vh;
+        width: 100%;
+
+        .tsparticles__canvas {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+}
+
+
+.HeaderContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap-reverse;
+
+    max-width: 940px;
+    
+    .typical {
+        font-family: $headingfont;
+        font-size: 1.4rem;
+    }
+
+    h1 {
+        font-size: 4rem;
+        white-space: nowrap;
+
+        strong {
+            font-family: $headingfont;
+            color: $accentcolor;
+        }
+    }
+    @media (max-width: $sm) {
+        padding: 8px;
+        
+        h1 {
+            white-space: unset;
+        }
+    }
+}
+
+
+.HeroLottie {
+    margin-right: -24px;
+
+    @media (max-width: $sm) {
+        margin-right: 0;
+    }
+}

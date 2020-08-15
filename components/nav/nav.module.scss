@@ -1,14 +1,17 @@
 @import '../../styles/var';
 
 .container { 
+    z-index: 5;
     position: fixed;
     max-width: 940px;
-
+    
     display: flex;
     height: 64px;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+
+    margin: 0 auto;
 
 
 
@@ -38,7 +41,6 @@
 
     ul {
         display: flex;
-        gap: 8px;
         list-style: none;
 
         font-size: 1.2rem;
@@ -49,6 +51,9 @@
     }
 }
 
+.navlinks {
+    gap: 16px;
+}
 
 .navlink {
     font-family: $headingfont;
@@ -110,6 +115,7 @@
 }
 
 .social {
+    gap: 8px !important;
 
     li {
         transition: all 0.1s;
