@@ -14,6 +14,19 @@ $bgblue: #1F2233;
 $blue1: #313550;
 $blue2: #2B2D44;
 $textcolor: #F8F2F0;
-$accentcolor: #EF233C;
+
+
+
+$primary: #EF233C;
+
+$primary-l1: #EF233C;
+$primary-l1: #f14156;
+$primary-l1: #f47180;
+
+$primary-d1: #be0e23;
+$primary-d2: #8e0b1a;
+$primary-d3: #5f0711;
+
+$accentcolor: $primary;
 
 $bggradient: linear-gradient(180deg, #1D1E2B 0%, #11121B 100%);

@@ -3,6 +3,7 @@ import styles from '../styles/Home.module.scss'
 import Typewriter from '../components/Typewriter';
 import SkyParticles from '../components/skyparticles';
 import LottieAstronaut from '../components/lottie/astronaut';
+import Button from '../components/button';
 
 export default function Home() {
 
@@ -22,6 +23,7 @@ export default function Home() {
             />
             <h1>Hi, I am <strong>Alan Siqueira</strong></h1>
             <p>I will transform your ideas into successful digital products</p>
+            <Button href="/work" className="botaozaum" >Esse é um botão</Button>
           </div>
           <div>
             <LottieAstronaut className={styles.HeroLottie}/>
@@ -31,6 +33,7 @@ export default function Home() {
 
       <SkyParticles className={styles.tsparticles} />
     </section>
+
 
     </>
   )
