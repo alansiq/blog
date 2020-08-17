@@ -26,13 +26,20 @@ export default function Home() {
             <Button href="/work" className="botaozaum" >Esse é um botão</Button>
           </div>
           <div>
-            <LottieAstronaut className={styles.HeroLottie}/>
+            <LottieAstronaut className={styles.HeroLottie} /> 
           </div>
 
         </header>
 
-      <SkyParticles className={styles.tsparticles} />
-    </section>
+        <SkyParticles className={styles.tsparticles} />
+      </section>
+
+
+      <section className={styles.WorkSection}>
+        <div id="deviceful">
+
+        </div>
+      </section>
 
 
     </>
