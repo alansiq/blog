@@ -55,13 +55,6 @@ function App() {
   }, []);
 
 
-  function toggleLaptop() {
-    if (screenshot === '/alansiqueira.png') {
-      setScreenshot('/redgarden.jpg')
-    } else {
-      setScreenshot('/alansiqueira.png')
-    }
-  }
 
   return (
     <div className={styles.container}>
@@ -69,7 +62,6 @@ function App() {
 
       </div>
 
-      <button onClick={() => toggleLaptop()}>TOGGLE SCREENSHOT</button>
     </div>
   );
 
