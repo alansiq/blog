@@ -1,12 +1,12 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.scss'
+import styles from '../styles/Home.module.scss';
 import Typewriter from '../components/Typewriter';
 import SkyParticles from '../components/skyparticles';
 import LottieAstronaut from '../components/lottie/astronaut';
 import Button from '../components/button';
 
-export default function Home() {
 
+export default function Home() {
 
   return (
     <>
@@ -36,9 +36,7 @@ export default function Home() {
 
 
       <section className={styles.WorkSection}>
-        <div id="deviceful">
-
-        </div>
+        
       </section>
 
 

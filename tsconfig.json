@@ -21,7 +21,7 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx", "components/Typewriter/index.js", "components/deviceful/index.js"
+    "**/*.tsx", "components/Typewriter/index.js", "components/deviceful/index.tsx"
   ],
   "exclude": [
     "node_modules"

@@ -1,3 +1,12 @@
-export default function Work() {
-    return <h1>Work</h1>
+import dynamic from 'next/dynamic';
+
+
+const Deviceful = dynamic(() => import('../../components/deviceful'), {
+    ssr: false
+})
+
+function Work() {
+    return <Deviceful />
 }
+
+export default Work;
