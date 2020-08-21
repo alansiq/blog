@@ -1,0 +1,27 @@
+@use '../../styles/var' as *;
+
+.mainContainer {
+    padding-top: 100px;
+    background: rgba(0,0,0,0.2);
+    width: $maxW;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    overflow: hidden;
+}
+
+.contentWrapper {
+    width: 40%;
+}
+
+.deviceWrapper {
+    overflow: hidden;
+}
+
+
+@keyframes slideInDevice {
+    from {transform: translateX(120%); opacity: 1;};
+    to {transform: translateX(0); opacity: 1;};
+}

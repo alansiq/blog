@@ -1,10 +1,11 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.scss';
-import Typewriter from '../components/Typewriter';
 import SkyParticles from '../components/skyparticles';
 import LottieAstronaut from '../components/lottie/astronaut';
 import Button from '../components/button';
+import dynamic from 'next/dynamic';
 
+const Typewriter = dynamic(() => import('../components/Typewriter'), {ssr: false})
 
 export default function Home() {
 
@@ -19,7 +20,7 @@ export default function Home() {
           <div>
             <Typewriter
               className={styles.typical}
-              content={['Product Designer', 1000, 'Front-end Developer', 1000, 'React fanatic', 1000, 'NodeJS enthusiast', 1000, 'UI/UX Designer', 500]}
+              content={['Product Designer', 1000, 'Front-end Developer', 1000, 'React fanatic', 1000, 'NodeJS enthusiast', 1000, 'UI/UX Designer', 1000]}
             />
             <h1>Hi, I am <strong>Alan Siqueira</strong></h1>
             <p>I will transform your ideas into successful digital products</p>
