@@ -24,7 +24,7 @@ export default function Home() {
             />
             <h1>Hi, I am <strong>Alan Siqueira</strong></h1>
             <p>I will transform your ideas into successful digital products</p>
-            <Button href="/work" className="botaozaum" >Esse é um botão</Button>
+            <Button href="https://www.linkedin.com/in/alanpsiqueira/">Contact me on LinkedIn</Button>
           </div>
           <div>
             <LottieAstronaut className={styles.HeroLottie} /> 
