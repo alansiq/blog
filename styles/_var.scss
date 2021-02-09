@@ -32,3 +32,16 @@ $primary-d3: #5f0711;
 $accentcolor: $primary;
 
 $bggradient: linear-gradient(180deg, #1D1E2B 0%, #11121B 100%);
+
+
+@keyframes fadeInUp {
+    from {
+        transform: translate3d(0,20px,0);
+        opacity: 0.5;
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}

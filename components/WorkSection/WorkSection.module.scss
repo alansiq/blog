@@ -28,9 +28,9 @@
             position: absolute;
             font-family: $headingfont;
             font-weight: 800;
-            font-size: 4rem;
+            font-size: 4.3rem;
             transform: rotate(-90deg);
-            left: -15%;
+            left: -10%;
             top: 15%;
         }
     }
@@ -85,14 +85,25 @@
     width: 100%;
     gap: 32px;
     display: flex;
-    flex-grow: 1;
-    align-items: flex-start;
+    flex-shrink: 0;
+    align-items: center;
     padding-right: 32px;
 
     .workCard {
+        animation-name: fadeInUp;
+        animation-duration: 0.6s;
+        animation-fill-mode: both;
+        
+        &:nth-of-type(2) {
+            animation-delay: 0.2s;
+        }
+        
+        &:nth-of-type(3) {
+            animation-delay: 0.4s;
+        }
 
         margin-top: 16px;
-
+        flex-shrink: 0;
         position: relative;
         height: 650px;
         width: 480px;
@@ -156,6 +167,7 @@
         border: none;
         width: 50px;
         height: 50px;
+
         svg {
             width: 100%;
             height: 100%;
@@ -171,3 +183,14 @@
         color: $primary;
     }
 }
+
+.casesPlaceholder {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+

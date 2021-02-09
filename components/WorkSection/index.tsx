@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, FunctionComponent } from 'react';
 import styles from './WorkSection.module.scss';
 import { VscArrowRight, VscArrowLeft } from "react-icons/vsc";
 
@@ -47,8 +47,13 @@ const workList = [
 
 ];
 
-const RenderWorkCases = () => {
-    const itemsPerPage = 3;
+interface RenderWorkCasesProps {
+    qtd?: number;
+}
+
+
+const RenderWorkCases:FunctionComponent<RenderWorkCasesProps> = ({qtd}) => {
+    const itemsPerPage = qtd;
     const [currentPage, setCurrentPage] = useState(1);
     const [currentItemList, setCurrentItemList] = useState([]);
     const objectArray = workList;
@@ -71,6 +76,15 @@ const RenderWorkCases = () => {
         }
     }
 
+    const RenderCasesPagination = () => {
+
+        return (
+            <div className={styles.casesPagination}>
+            <button onClick={() => previousPage()}><VscArrowLeft /></button><button onClick={() => nextPage()}><VscArrowRight /></button>
+            </div>
+        )
+    }
+
     useEffect(() => {
 
         const lastItemIndex = currentPage * itemsPerPage;
@@ -81,8 +95,6 @@ const RenderWorkCases = () => {
         setCurrentItemList(objectArray.slice(firstItemIndex, lastItemIndex))
 
     }, [currentPage])
-
-    function ReturnValidList() {
 
         if (currentItemList.length % itemsPerPage != 0) {
             return (
@@ -100,13 +112,11 @@ const RenderWorkCases = () => {
                             )
                             )
                         }
-                        <div>
-                            More to come soon...
+                        <div className={styles.casesPlaceholder}>
+                            <p>More to come soon...</p>
                         </div>
                     </div>
-                    <div className={styles.casesPagination}>
-                        <button onClick={() => previousPage()}><VscArrowLeft /></button><button onClick={() => nextPage()}><VscArrowRight /></button>
-                    </div>
+                    <RenderCasesPagination />
                 </>
             )
         }
@@ -125,22 +135,18 @@ const RenderWorkCases = () => {
                     )
                     )}
                 </div>
-                <div className={styles.casesPagination}>
-                    <button onClick={() => previousPage()}><VscArrowLeft /></button><button onClick={() => nextPage()}><VscArrowRight /></button>
-                </div>
+                <RenderCasesPagination />
             </>
         )
-    }
-
-    return (
-        <ReturnValidList />
-    )
 }
 
 
+interface WorkSectionProps {
+    qtd: number;
+}
 
 
-export default function WorkSection() {
+const WorkSection:FunctionComponent<WorkSectionProps> = ({qtd}) => {
 
     const [currentWorkNav, setCurrentWorkNav] = useState("work");
 
@@ -160,15 +166,12 @@ export default function WorkSection() {
                         </ul>
                     </nav>
 
-
-                    {currentWorkNav == "work" ? <RenderWorkCases /> : <p>You're seeing a paragraph container for Link 1</p>}
-
-
-
-
+                    {currentWorkNav == "work" ? <RenderWorkCases qtd={qtd} /> : <p>You're seeing a paragraph container for Link 1</p>}
 
                 </div>
             </section>
         </>
     )
 }
+
+export default WorkSection;

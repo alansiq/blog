@@ -36,12 +36,9 @@ export default function Home() {
         <SkyParticles className={styles.tsparticles} />
       </section>
 
-      <div className={styles.anySectionContainer}>
-
-        <WorkSection />
-
+      <div className={styles.anyContainer}>
+        <WorkSection qtd={6} />
       </div>
-
     </>
   )
 }
