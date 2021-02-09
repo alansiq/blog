@@ -25,7 +25,7 @@ export default function Nav() {
                 </div>
 
                 <ul className={styles.navlinks}>
-                    {/* <li>
+                    <li>
                         <NavLink onClick={() => setMenuIsExpanded(false)} className={styles.navlink} activeClassName={styles.active} href='/'>
                             Home
                         </NavLink>
@@ -39,7 +39,7 @@ export default function Nav() {
                         <NavLink onClick={() => setMenuIsExpanded(false)} className={`${styles.navlink} ${styles.bloglink}`} activeClassName={styles.active} href='/blog'>
                             Blog
                         </NavLink>
-                    </li> */}
+                    </li>
                 </ul>
                 <ul className={styles.social}>
                     <li><a target="_blank" rel="noopener noreferrer" href="https://github.com/alansiq"><FaGithub /></a></li>

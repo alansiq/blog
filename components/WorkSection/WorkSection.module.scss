@@ -1,0 +1,173 @@
+@import '../../styles/var';
+
+.WorkSection {
+    position: relative;
+    height: 90vh;
+    width: 100%;
+
+    display: flex;
+
+
+    justify-content: center;
+    align-items: center;
+
+    .WorkTitle {
+        position: relative;
+        font-size: 4rem;
+        transform: rotate(-90deg);
+    }
+
+    .WorkSectionContainer {
+        position: absolute;
+        height: 90%;
+        width: 80vw;
+        right: 0;
+
+        &::before {
+            content: 'Work.';
+            position: absolute;
+            font-family: $headingfont;
+            font-weight: 800;
+            font-size: 4rem;
+            transform: rotate(-90deg);
+            left: -15%;
+            top: 15%;
+        }
+    }
+}
+
+.WorkUl {
+    display: flex;
+    list-style: none;
+
+
+    .WorkLi {
+        position: relative;
+        padding: 0 16px;
+        height: 48px;
+
+        button {
+            background: none;
+            border: none;
+
+            font-size: 1.6rem;
+            font-family: $headingfont;
+
+            &:focus, &:active {
+                border: none;
+                outline: none;
+            }
+            &::after {
+                position: absolute;
+                content: '';
+                background-color: $primary;
+                width: 0%;
+                height: 4px;
+                bottom: 0;
+                left: 50%;
+                transition: all 0.1s;
+            }
+            
+            &.workNavActive {
+
+                &::after {
+                    width: 100%;
+                    left: 0;
+                  
+              }
+            }
+        }
+    }
+
+}
+
+.casesContainer {
+    width: 100%;
+    gap: 32px;
+    display: flex;
+    flex-grow: 1;
+    align-items: flex-start;
+    padding-right: 32px;
+
+    .workCard {
+
+        margin-top: 16px;
+
+        position: relative;
+        height: 650px;
+        width: 480px;
+        background-color: $textcolor;
+
+        border-radius: 8px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        overflow: hidden;
+        transition: all 0.2s;
+
+        & h1, p, a {
+            display: none;
+            transition: all 0.2s;
+            z-index: 1;
+            color: $textcolor;
+        }
+
+        img {
+            height: 50%;
+            width: 50%;
+            transition: all 0.1s;
+
+
+            position: absolute;
+            z-index: 0;
+        }
+    
+        &:hover {
+
+            background-color: #a0a0a0;
+
+            & h1, p, a {
+                display: block;
+            }
+
+            img {
+                filter: blur(8px) brightness(60%);
+                
+            }
+        }
+
+        
+    }
+}
+
+.casesPagination {
+    width: 100%;
+    padding: 16px 32px 0px 0px;
+
+    display: flex;
+    justify-content: flex-end;
+
+    button {
+        background: none;
+        outline: none;
+        border: none;
+        width: 50px;
+        height: 50px;
+        svg {
+            width: 100%;
+            height: 100%;
+            fill: $textcolor;
+            transition: fill 0.2s;
+
+            &:hover {
+                fill: $primary;
+            }
+
+        }
+
+        color: $primary;
+    }
+}

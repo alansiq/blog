@@ -15,7 +15,7 @@ const CatchAll = () => {
                 <h1>Ops...</h1>
                 <p>
                     It seems that I didn't plan ahead for a
-                    <strong> {slug}</strong> page
+                     "<strong>{slug}</strong>" page
                 </p>
                 <Link href="/">Go back home</Link><br />
                 <Link href="/blog">Check my blog</Link>

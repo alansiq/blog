@@ -7,6 +7,7 @@ function MyApp({ Component, pageProps }) {
   <>
     <Nav />
     <Component {...pageProps} />
+    <Footer />
   </>
   )
 }

@@ -2,17 +2,18 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.scss';
 import SkyParticles from '../components/skyparticles';
 import LottieAstronaut from '../components/lottie/astronaut';
+import WorkSection from '../components/WorkSection';
 import Button from '../components/button';
 import dynamic from 'next/dynamic';
 
-const Typewriter = dynamic(() => import('../components/Typewriter'), {ssr: false})
+const Typewriter = dynamic(() => import('../components/Typewriter'), { ssr: false })
 
 export default function Home() {
 
   return (
     <>
       <Head>
-        <title>Alan Siqueira</title>
+        <title>Alan Siqueira | UI/UX Designer and Web Developer</title>
       </Head>
 
       <section className={styles.HeroContainer}>
@@ -27,7 +28,7 @@ export default function Home() {
             <Button href="https://www.linkedin.com/in/alanpsiqueira/">Contact me on LinkedIn</Button>
           </div>
           <div>
-            <LottieAstronaut className={styles.HeroLottie} /> 
+            <LottieAstronaut className={styles.HeroLottie} />
           </div>
 
         </header>
@@ -35,11 +36,11 @@ export default function Home() {
         <SkyParticles className={styles.tsparticles} />
       </section>
 
+      <div className={styles.anySectionContainer}>
 
-      <section className={styles.WorkSection}>
-        
-      </section>
+        <WorkSection />
 
+      </div>
 
     </>
   )
