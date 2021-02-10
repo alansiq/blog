@@ -36,12 +36,30 @@ $bggradient: linear-gradient(180deg, #1D1E2B 0%, #11121B 100%);
 
 @keyframes fadeInUp {
     from {
+        opacity: 0.3;
         transform: translate3d(0,20px,0);
-        opacity: 0.5;
     }
 
     to {
+        opacity: 1;
         transform: translate3d(0,0,0);
-        opacity: 1
+    }
+}
+
+@keyframes constantFlash {
+    0% {
+        opacity: 0;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
     }
 }

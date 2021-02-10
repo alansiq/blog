@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useEffect, useState, FunctionComponent } from 'react';
+import { useEffect, useState, FunctionComponent, useLayoutEffect } from 'react';
 import styles from './WorkSection.module.scss';
 import { VscArrowRight, VscArrowLeft } from "react-icons/vsc";
 
@@ -52,13 +52,18 @@ interface RenderWorkCasesProps {
 }
 
 
-const RenderWorkCases:FunctionComponent<RenderWorkCasesProps> = ({qtd}) => {
-    const itemsPerPage = qtd;
+
+
+const RenderWorkCases: FunctionComponent<RenderWorkCasesProps> = ({ qtd }) => {
+    const [itemsPerPage, setItemsPerPage] = useState(qtd);
     const [currentPage, setCurrentPage] = useState(1);
     const [currentItemList, setCurrentItemList] = useState([]);
     const objectArray = workList;
-
     const lastPage = Math.ceil(objectArray.length / itemsPerPage);
+
+    useEffect(() => {
+        setItemsPerPage(qtd)
+    }, [qtd])
 
     function nextPage() {
         if (currentPage == lastPage) {
@@ -79,8 +84,8 @@ const RenderWorkCases:FunctionComponent<RenderWorkCasesProps> = ({qtd}) => {
     const RenderCasesPagination = () => {
 
         return (
-            <div className={styles.casesPagination}>
-            <button onClick={() => previousPage()}><VscArrowLeft /></button><button onClick={() => nextPage()}><VscArrowRight /></button>
+            <div className={styles.CasesPagination}>
+                <button onClick={() => previousPage()}><VscArrowLeft /></button><button onClick={() => nextPage()}><VscArrowRight /></button>
             </div>
         )
     }
@@ -88,56 +93,36 @@ const RenderWorkCases:FunctionComponent<RenderWorkCasesProps> = ({qtd}) => {
     useEffect(() => {
 
         const lastItemIndex = currentPage * itemsPerPage;
-        // 1 * 3 = 3, 6, 9
         const firstItemIndex = lastItemIndex - itemsPerPage;
-        // 9 - 3 = 6
 
-        setCurrentItemList(objectArray.slice(firstItemIndex, lastItemIndex))
+        setCurrentItemList(objectArray.slice(firstItemIndex, lastItemIndex));
+
 
     }, [currentPage])
 
-        if (currentItemList.length % itemsPerPage != 0) {
-            return (
-                <>
-                    <div className={styles.casesContainer}>
-                        {
-                            currentItemList.map(work =>
-                            (
-                                <div className={styles.workCard}>
-                                    <h1>{work.caseTitle}</h1>
-                                    <p>{work.caseTitle}</p>
-                                    <Link href={work.caseLink}>{work.caseTitle}</Link>
-                                    <img src={work.caseLink} />
-                                </div>
-                            )
-                            )
-                        }
-                        <div className={styles.casesPlaceholder}>
-                            <p>More to come soon...</p>
-                        </div>
-                    </div>
-                    <RenderCasesPagination />
-                </>
-            )
-        }
-
-        return (
-            <>
-                <div className={styles.casesContainer}>
-                    {currentItemList.map(work =>
+    return (
+        <>
+            <div className={styles.CardsContainer}>
+                {
+                    currentItemList.map(work =>
                     (
-                        <div className={styles.workCard}>
+                        <div key={work.caseTitle} className={styles.WorkCard}>
                             <h1>{work.caseTitle}</h1>
                             <p>{work.caseTitle}</p>
                             <Link href={work.caseLink}>{work.caseTitle}</Link>
                             <img src={work.caseLink} />
                         </div>
-                    )
-                    )}
-                </div>
-                <RenderCasesPagination />
-            </>
-        )
+                    ))
+                }
+                {currentItemList.length % itemsPerPage != 0 ? <div className={styles.WorkCardPlaceholder}>
+                    <p>More to come soon...</p>
+                </div> : <></>}
+
+            </div>
+            <RenderCasesPagination />
+        </>
+    )
+
 }
 
 
@@ -146,14 +131,13 @@ interface WorkSectionProps {
 }
 
 
-const WorkSection:FunctionComponent<WorkSectionProps> = ({qtd}) => {
+const WorkSection: FunctionComponent<WorkSectionProps> = ({ qtd }) => {
 
     const [currentWorkNav, setCurrentWorkNav] = useState("work");
 
-
     return (
         <>
-            <section className={styles.WorkSection}>
+            {/* <section className={styles.WorkSection}>
                 <div className={styles.WorkSectionContainer}>
                     <nav>
                         <ul className={styles.WorkUl}>
@@ -169,6 +153,37 @@ const WorkSection:FunctionComponent<WorkSectionProps> = ({qtd}) => {
                     {currentWorkNav == "work" ? <RenderWorkCases qtd={qtd} /> : <p>You're seeing a paragraph container for Link 1</p>}
 
                 </div>
+            </section> */}
+
+            <section className={styles.WorkSection}>
+
+                <div className={styles.WorkSectionHeading}>
+                    <h1>Work</h1>
+                </div>
+
+                <div className={styles.WorkContainer}>
+
+                    <div className={styles.NavigationContainer}>
+                        <nav>
+                            <ul className={styles.WorkUl}>
+                                <li className={styles.WorkLi}>
+                                    <button onClick={() => setCurrentWorkNav("work")} className={currentWorkNav == "work" ? styles.workNavActive : ""}>Cases</button>
+                                </li>
+                                <li className={styles.WorkLi}>
+                                    <button onClick={() => setCurrentWorkNav("articles")} className={currentWorkNav == "articles" ? styles.workNavActive : ""}>Articles</button>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div className={styles.ContentContainer}>
+
+                        {
+                            currentWorkNav == "work" ? <RenderWorkCases qtd={qtd} /> : <p>Articles in here</p>
+                        }
+
+                    </div>
+                </div>
+
             </section>
         </>
     )

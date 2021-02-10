@@ -1,196 +1,221 @@
 @import '../../styles/var';
 
+
+/*****************  REWORK *************************/
+
 .WorkSection {
-    position: relative;
-    height: 90vh;
+
+    height: 100vh;
     width: 100%;
 
     display: flex;
+    flex-direction: row;
 
-
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
 
-    .WorkTitle {
-        position: relative;
-        font-size: 4rem;
-        transform: rotate(-90deg);
-    }
+    padding: 0 64px 0 0;
 
-    .WorkSectionContainer {
-        position: absolute;
-        height: 90%;
-        width: 80vw;
-        right: 0;
+    .WorkSectionHeading {
+        height: 100%;
 
-        &::before {
-            content: 'Work.';
-            position: absolute;
-            font-family: $headingfont;
-            font-weight: 800;
-            font-size: 4.3rem;
-            transform: rotate(-90deg);
-            left: -10%;
-            top: 15%;
-        }
-    }
-}
-
-.WorkUl {
-    display: flex;
-    list-style: none;
-
-
-    .WorkLi {
-        position: relative;
-        padding: 0 16px;
-        height: 48px;
-
-        button {
-            background: none;
-            border: none;
-
-            font-size: 1.6rem;
-            font-family: $headingfont;
-
-            &:focus, &:active {
-                border: none;
-                outline: none;
-            }
-            &::after {
-                position: absolute;
-                content: '';
-                background-color: $primary;
-                width: 0%;
-                height: 4px;
-                bottom: 0;
-                left: 50%;
-                transition: all 0.1s;
-            }
+        h1 {
+            position: relative;
+            transform: rotate(-90deg) translate3d(-150%, 0, 0);
+            font-size: 4rem;
+            padding: 0;
+            margin: 0;
             
-            &.workNavActive {
+            &:after {
+                content: '';
+                position: absolute;
 
-                &::after {
-                    width: 100%;
-                    left: 0;
-                  
-              }
-            }
-        }
-    }
+                width: 20%;
+                height: 4px;
+                background-color: $primary;
+                bottom: 22%;
+                left: 110%;
 
-}
-
-.casesContainer {
-    width: 100%;
-    gap: 32px;
-    display: flex;
-    flex-shrink: 0;
-    align-items: center;
-    padding-right: 32px;
-
-    .workCard {
-        animation-name: fadeInUp;
-        animation-duration: 0.6s;
-        animation-fill-mode: both;
-        
-        &:nth-of-type(2) {
-            animation-delay: 0.2s;
-        }
-        
-        &:nth-of-type(3) {
-            animation-delay: 0.4s;
-        }
-
-        margin-top: 16px;
-        flex-shrink: 0;
-        position: relative;
-        height: 650px;
-        width: 480px;
-        background-color: $textcolor;
-
-        border-radius: 8px;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-
-        overflow: hidden;
-        transition: all 0.2s;
-
-        & h1, p, a {
-            display: none;
-            transition: all 0.2s;
-            z-index: 1;
-            color: $textcolor;
-        }
-
-        img {
-            height: 50%;
-            width: 50%;
-            transition: all 0.1s;
-
-
-            position: absolute;
-            z-index: 0;
-        }
-    
-        &:hover {
-
-            background-color: #a0a0a0;
-
-            & h1, p, a {
-                display: block;
-            }
-
-            img {
-                filter: blur(8px) brightness(60%);
+                animation: constantFlash 1.8s infinite;
                 
             }
         }
-
-        
     }
-}
 
-.casesPagination {
-    width: 100%;
-    padding: 16px 32px 0px 0px;
+    .WorkContainer {
 
-    display: flex;
-    justify-content: flex-end;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 80%;
+        width: 80%;
+        
+        .NavigationContainer {
+            width: 100%;
 
-    button {
-        background: none;
-        outline: none;
-        border: none;
-        width: 50px;
-        height: 50px;
+            .WorkUl {
+                display: flex;
+                list-style: none;
+            
+            
+                .WorkLi {
+                    position: relative;
+                    padding: 0 16px;
+                    height: 48px;
+            
+            
+            
+                    button {
+            
+                        font-size: 1.6rem;
+                        font-family: $headingfont;
+                        padding-bottom: 0;
+                        transition: transform 0.1s;
+            
+            
+                        &:hover {
+                            transform: scale(1.1);
+                        }
+            
+                        &::after {
+                            position: absolute;
+                            content: '';
+                            background-color: $primary;
+                            width: 0%;
+                            height: 4px;
+                            bottom: 0;
+                            left: 50%;
+                            transition: all 0.1s;
+                            transition-delay: 0s;
+                        }
+                        
+                        &.workNavActive {
+                            &:hover {
+                                transform: unset;
+                            }
+            
+                            &::after {
+                                transition-delay: 0.2s;
+                                width: 100%;
+                                left: 0;
+                          }
+                        }
+                    }
+                }
+            
+            }
+            
+        }
 
-        svg {
+        .ContentContainer {
+            display: flex;
             width: 100%;
             height: 100%;
-            fill: $textcolor;
-            transition: fill 0.2s;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
 
-            &:hover {
-                fill: $primary;
+
+            .CardsContainer {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 32px;
+                width: 100%;
+                height: 100%;
+
+                .WorkCard {
+
+                    position: relative;
+                    min-width: 450px;
+                    height: 90%;
+                    flex: 1;
+                    background-color: $textcolor;
+                    border-radius: 8px;
+                
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                
+                    overflow: hidden;
+                    transition: all 0.2s;
+                
+                    & h1, p, a {
+                        opacity: 0;
+                        z-index: 1;
+                        transition: all 0.4s;
+                        color: $textcolor;
+                    }
+                
+                    img {
+                        height: 50%;
+                        width: 50%;
+                        position: absolute;
+                    }
+
+                    animation: fadeInUp ease-in-out 0.8s;
+                    animation-fill-mode: both;
+
+                    &:nth-of-type(2n) {
+                        animation-delay: 0.2s;
+                    }
+
+                    &:nth-of-type(3n) {
+                        animation-delay: 0.4s;
+                    }
+                
+                    &:hover {
+                        background-color: #a0a0a0;
+                        & h1, p, a {
+                            opacity: 1;
+                        }
+                        img {
+                            filter: blur(8px) brightness(60%);            
+                        }
+                    }
+                
+                }
+
+                .WorkCardPlaceholder {
+                    flex: 1;
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: center;
+                }
+
+            }
+
+            .CasesPagination {
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+            
+                button {
+                    width: 50px;
+                    height: 50px;
+            
+                    svg {
+                        width: 100%;
+                        height: 100%;
+                        fill: $textcolor;
+                        transition: all 0.2s;
+                    }
+            
+                    &:hover {
+                        svg {
+                            transform: scale(1.1);
+                            fill: $primary;
+                        }
+                    }
+                }
             }
 
         }
 
-        color: $primary;
     }
-}
 
-.casesPlaceholder {
-    height: 100%;
-    width: 100%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 
