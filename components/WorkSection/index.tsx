@@ -39,11 +39,6 @@ const workList = [
         caseDescription: 'Dolor nisi duis elit est culpa occaecat pariatur duis. Dolor anim veniam voluptate ex sit. Proident proident voluptate enim ex quis consectetur ipsum anim elit mollit do. Adipisicing anim ipsum ea ipsum est. Fugiat incididunt dolor ipsum incididunt minim enim. Commodo magna cupidatat ullamco minim reprehenderit mollit ea aliquip quis culpa.',
         caseLink: '/redgarden.jpg',
     },
-    {
-        caseTitle: 'Case do Portfolio 8',
-        caseDescription: 'Lorem velit exercitation eu esse labore tempor proident cupidatat nostrud exercitation. Consequat ut incididunt ipsum excepteur. Cupidatat tempor culpa amet irure eiusmod commodo cupidatat excepteur ipsum ea. Velit quis occaecat labore anim qui Lorem nostrud esse ex exercitation.',
-        caseLink: '/alansiqueira.png',
-    },
 
 ];
 
@@ -119,7 +114,7 @@ const RenderWorkCases: FunctionComponent<RenderWorkCasesProps> = ({ qtd }) => {
                 </div> : <></>}
 
             </div>
-            <RenderCasesPagination />
+            {lastPage > 1 ? <RenderCasesPagination /> : <></>}
         </>
     )
 
