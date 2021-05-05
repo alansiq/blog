@@ -4,6 +4,7 @@ import SkyParticles from '../components/skyparticles';
 import LottieAstronaut from '../components/lottie/astronaut';
 import Button from '../components/button';
 import dynamic from 'next/dynamic';
+import AboutMe from '../components/AboutMe';
 
 const Typewriter = dynamic(() => import('../components/Typewriter'), { ssr: false, loading: () => <p>Loading</p> })
 const WorkSection = dynamic(() => import('../components/WorkSection'),{ ssr: false, loading: () => <p>Loading</p>})
@@ -36,6 +37,8 @@ export default function Home() {
 
         <SkyParticles className={styles.tsparticles} />
       </section>
+
+      <AboutMe />
 
       <WorkSection />
     </>
