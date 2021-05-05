@@ -2,12 +2,13 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.scss';
 import SkyParticles from '../components/skyparticles';
 import LottieAstronaut from '../components/lottie/astronaut';
-// import WorkSection from '../components/WorkSection';
 import Button from '../components/button';
 import dynamic from 'next/dynamic';
 
 const Typewriter = dynamic(() => import('../components/Typewriter'), { ssr: false, loading: () => <p>Loading</p> })
-const WorkSection = dynamic(() => import('../components/WorkSection'),{ ssr: false})
+const WorkSection = dynamic(() => import('../components/WorkSection'),{ ssr: false, loading: () => <p>Loading</p>})
+
+
 export default function Home() {
 
   return (
@@ -36,7 +37,7 @@ export default function Home() {
         <SkyParticles className={styles.tsparticles} />
       </section>
 
-      <WorkSection qtd={3} />
+      <WorkSection />
     </>
   )
 }

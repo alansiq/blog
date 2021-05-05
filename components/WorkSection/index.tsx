@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useEffect, useState, FunctionComponent, useLayoutEffect } from 'react';
+import { useEffect, useState, FunctionComponent } from 'react';
 import styles from './WorkSection.module.scss';
 import { VscArrowRight, VscArrowLeft } from "react-icons/vsc";
 
@@ -42,23 +42,43 @@ const workList = [
 
 ];
 
-interface RenderWorkCasesProps {
-    qtd?: number;
-}
+
+const RenderWorkCases: React.FC = () => {
+
+    const windowSize = useWindowSize();
+
+    function updateCards() {
+        if (windowSize.width < 1366 && windowSize.width > 940) { 
+            setItemsPerPage(2);
+            setCurrentPage(1);
 
 
+        } else;
+        if (windowSize.width < 940) { 
+            setItemsPerPage(1);
+            setCurrentPage(1);
 
 
-const RenderWorkCases: FunctionComponent<RenderWorkCasesProps> = ({ qtd }) => {
-    const [itemsPerPage, setItemsPerPage] = useState(qtd);
+        } else 
+        if (windowSize.width > 1366) {
+            setItemsPerPage(3);
+            setCurrentPage(1);
+
+        }
+    }
+
+    const [itemsPerPage, setItemsPerPage] = useState(3);
     const [currentPage, setCurrentPage] = useState(1);
     const [currentItemList, setCurrentItemList] = useState([]);
     const objectArray = workList;
     const lastPage = Math.ceil(objectArray.length / itemsPerPage);
 
-    useEffect(() => {
-        setItemsPerPage(qtd)
-    }, [qtd])
+     const lastItemIndex = currentPage * itemsPerPage;
+     const firstItemIndex = lastItemIndex - itemsPerPage;
+
+    
+     
+
 
     function nextPage() {
         if (currentPage == lastPage) {
@@ -87,16 +107,33 @@ const RenderWorkCases: FunctionComponent<RenderWorkCasesProps> = ({ qtd }) => {
 
     useEffect(() => {
 
-        const lastItemIndex = currentPage * itemsPerPage;
-        const firstItemIndex = lastItemIndex - itemsPerPage;
-
         setCurrentItemList(objectArray.slice(firstItemIndex, lastItemIndex));
-
 
     }, [currentPage])
 
+    useEffect(() => {
+        if (windowSize.width < 940) {
+            setItemsPerPage(1);
+        }
+
+        if (windowSize.width > 940) {
+            setItemsPerPage(3);
+        }
+        if (windowSize.width < 940) {
+            setItemsPerPage(1);
+        }
+        updateCards();
+    }, [])
+
+    useEffect(() => {
+        updateCards();
+        setCurrentItemList(objectArray.slice(firstItemIndex, lastItemIndex));
+
+    }, [windowSize])
+
     return (
         <>
+            
             <div className={styles.CardsContainer}>
                 {
                     currentItemList.map(work =>
@@ -115,41 +152,19 @@ const RenderWorkCases: FunctionComponent<RenderWorkCasesProps> = ({ qtd }) => {
 
             </div>
             {lastPage > 1 ? <RenderCasesPagination /> : <></>}
+
+            
         </>
     )
 
 }
 
-
-interface WorkSectionProps {
-    qtd: number;
-}
-
-
-const WorkSection: FunctionComponent<WorkSectionProps> = ({ qtd }) => {
-
+const WorkSection: FunctionComponent = () => {
+    
     const [currentWorkNav, setCurrentWorkNav] = useState("work");
 
     return (
         <>
-            {/* <section className={styles.WorkSection}>
-                <div className={styles.WorkSectionContainer}>
-                    <nav>
-                        <ul className={styles.WorkUl}>
-                            <li className={styles.WorkLi}>
-                                <button onClick={() => setCurrentWorkNav("work")} className={currentWorkNav == "work" ? styles.workNavActive : ""}>Cases</button>
-                            </li>
-                            <li className={styles.WorkLi}>
-                                <button onClick={() => setCurrentWorkNav("articles")} className={currentWorkNav == "articles" ? styles.workNavActive : ""}>Articles</button>
-                            </li>
-                        </ul>
-                    </nav>
-
-                    {currentWorkNav == "work" ? <RenderWorkCases qtd={qtd} /> : <p>You're seeing a paragraph container for Link 1</p>}
-
-                </div>
-            </section> */}
-
             <section className={styles.WorkSection}>
 
                 <div className={styles.WorkSectionHeading}>
@@ -173,7 +188,7 @@ const WorkSection: FunctionComponent<WorkSectionProps> = ({ qtd }) => {
                     <div className={styles.ContentContainer}>
 
                         {
-                            currentWorkNav == "work" ? <RenderWorkCases qtd={qtd} /> : <p>Articles in here</p>
+                            currentWorkNav == "work" ? <RenderWorkCases /> : <p>Articles in here</p>
                         }
 
                     </div>
@@ -185,3 +200,39 @@ const WorkSection: FunctionComponent<WorkSectionProps> = ({ qtd }) => {
 }
 
 export default WorkSection;
+
+
+
+// ** USE WINDOW SIZE ** // 
+
+  // Hook
+  function useWindowSize() {
+    // Initialize state with undefined width/height so server and client renders match
+    // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
+    const [windowSize, setWindowSize] = useState({
+      width: undefined,
+      height: undefined,
+    });
+  
+    useEffect(() => {
+      // Handler to call on window resize
+      function handleResize() {
+        // Set window width/height to state
+        setWindowSize({
+          width: window.innerWidth,
+          height: window.innerHeight,
+        });
+      }
+      
+      // Add event listener
+      window.addEventListener("resize", handleResize);
+      
+      // Call handler right away so state gets updated with initial window size
+      handleResize();
+      
+      // Remove event listener on cleanup
+      return () => window.removeEventListener("resize", handleResize);
+    }, []); // Empty array ensures that effect is only run on mount
+  
+    return windowSize;
+  }
