@@ -2,8 +2,8 @@
 
 .container { 
     z-index: 5;
-    position: fixed;
-    max-width: 940px;
+    position: absolute;
+    max-width: 1300px;
     
     display: flex;
     height: 64px;
@@ -16,26 +16,23 @@
 
 
     .logo {
+        font-size: 1.5rem;
+        position: relative;
         color: $textcolor;
         cursor: pointer;
+        text-transform: uppercase;
         user-select: none;
         transition: transform 0.05s;
+        
 
-        &::before {
-            content: "< ";
-            color: $accentcolor;
-        }
-        &::after {
-            content: " />";
-            color: $accentcolor;
-        }
-
-        &:hover {
-            transform: translateY(-4px);
-        }
-
-        &:active {
-            transform: translateY(0);
+        &:after {
+            position: absolute;
+            font-size: 0.8rem;
+            right: 0;
+            top: 100%;
+            content: 'fullstack developer';
+            color: $textcolor_darker;
+            text-transform: lowercase;
         }
     }
 

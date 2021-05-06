@@ -15,7 +15,7 @@ export default function Nav() {
         <>
             <nav className={menuIsExpanded ? `${styles.container} ${styles.expanded}` : `${styles.container}`}>
                 <h1 className={styles.logo}> 
-                    <Link href="/"><a>Alan Siqueira</a></Link>
+                    <Link href="/"><a>AlanSiqueira</a></Link>
                 </h1>
 
                 <div onClick={() => setMenuIsExpanded(!menuIsExpanded)} className={styles.toggler}>

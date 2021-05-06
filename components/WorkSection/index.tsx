@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useEffect, useState, FunctionComponent } from 'react';
+import React, { useEffect, useState, FunctionComponent } from 'react';
 import styles from './WorkSection.module.scss';
 import { VscArrowRight, VscArrowLeft } from "react-icons/vsc";
 
@@ -63,7 +63,6 @@ const RenderWorkCases: React.FC = () => {
         if (windowSize.width > 1366) {
             setItemsPerPage(3);
             setCurrentPage(1);
-
         }
     }
 
@@ -81,18 +80,21 @@ const RenderWorkCases: React.FC = () => {
 
 
     function nextPage() {
-        if (currentPage == lastPage) {
+        if (currentPage == lastPage || currentPage > lastPage) {
             setCurrentPage(1);
         } else {
-            setCurrentPage(currentPage + 1)
+            const nextPage = currentPage + 1;
+            setCurrentPage(nextPage);
         }
     }
 
     function previousPage() {
-        if (currentPage == 1) {
-            setCurrentPage(lastPage)
+        if (currentPage == 1 || currentPage < 1) {
+            const previousPage = lastPage;
+            setCurrentPage(previousPage);
         } else {
-            setCurrentPage(currentPage - 1)
+            const previousPage = currentPage - 1;
+            setCurrentPage(previousPage);
         }
     }
 
@@ -163,6 +165,7 @@ const WorkSection: FunctionComponent = () => {
     
     const [currentWorkNav, setCurrentWorkNav] = useState("work");
 
+
     return (
         <>
             <section className={styles.WorkSection}>
@@ -186,10 +189,17 @@ const WorkSection: FunctionComponent = () => {
                         </nav>
                     </div>
                     <div className={styles.ContentContainer}>
-
-                        {
+                        
+                        <div className={currentWorkNav == "work" ? styles.shown : styles.hidden}>
+                           <RenderWorkCases />
+                        </div>
+                        <div className={currentWorkNav == "work" ? styles.hidden : styles.shown}>
+                           <p>Articles here</p>
+                        </div>
+                        
+                        {/* {
                             currentWorkNav == "work" ? <RenderWorkCases /> : <p>Articles in here</p>
-                        }
+                        } */}
 
                     </div>
                 </div>

@@ -10,18 +10,26 @@
     position: relative;
     z-index: 1;
     min-height: 100vh;
-    max-width: 100%;
     width: 100%;
 
     background: $bggradient;
 
     display: flex;
     flex-direction: column;
-
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 
-    overflow: hidden;
+    @media only screen and (min-width: $xl) {
+        padding: 0 294px;
+    }
+
+    @media only screen and (max-width: $xl) {
+         padding: 0 120px;
+    }
+
+    @media only screen and (max-width: $md) {
+        padding: 0 16px;
+    }
 
     .tsparticles {
         position: absolute;
@@ -46,21 +54,39 @@
     align-items: center;
 
     max-width: 940px;
-    
-    .typical {
-        font-family: $headingfont;
-        font-size: 1.4rem;
+
+    small {
+        font-family: $paragraphfont;
+        color: $primary;
     }
 
-    h1 {
-        font-size: 4rem;
-        white-space: nowrap;
-
-        strong {
-            font-family: $headingfont;
-            color: $accentcolor;
+    .TitleContainer {
+        padding: 1rem 0;
+        h1 {
+            font-size: 4.5rem;
+            white-space: nowrap;
+            line-height: 90%;
+        
+        
+            &.secondTitle {
+                color: $textcolor_darker;
+                white-space: nowrap;
+                font-size: 2.8rem;
+            }
+    
         }
     }
+    
+
+    p {
+        max-width: 90%;
+        font-size: 0.8rem;
+        line-height: 160%;
+        letter-spacing: 0.15em;
+
+    }
+
+
 
     @media (max-width: $lg) {
         flex-wrap: wrap-reverse;

@@ -2,21 +2,20 @@ import Particles from "react-tsparticles";
 
 export default function SkyParticles(props: any) {
   return (
-    // <div className={props.className}>
       <Particles width="100%" height="100%" className={props.className} canvasClassName="tsparticles__canvas"
         params={{ "particles": {
     "number": {
-      "value": 355,
+      "value": 80,
       "density": {
         "enable": true,
         "value_area": 990.1476416322727
       }
     },
     "color": {
-      "value": "#ffffff"
+      "value": "#F8F2F0"
     },
     "shape": {
-      "type": "circle",
+      "type": "polygon",
       "stroke": {
         "width": 0,
         "color": "#000000"
@@ -46,9 +45,9 @@ export default function SkyParticles(props: any) {
       }
     },
     "line_linked": {
-      "enable": false,
-      "distance": 150,
-      "color": "#ffffff",
+      "enable": true,
+      "distance": 95,
+      "color": "#F8F2F0",
       "opacity": 0.4,
       "width": 1
     },
@@ -86,8 +85,8 @@ export default function SkyParticles(props: any) {
       },
       "bubble": {
         "distance": 83.91608391608392,
-        "size": 1,
-        "duration": 3,
+        "size": 6,
+        "duration": 100,
         "opacity": 1,
       },
       "repulse": {
@@ -104,7 +103,6 @@ export default function SkyParticles(props: any) {
   },
         "retina_detect": true}}
       />
-    // </div>
       
 
   );
