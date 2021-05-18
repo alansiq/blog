@@ -1,12 +1,22 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-let array = []; 
+import { createClient } from 'contentful';
 
-export default (request, response) => {
-  if (request.method === 'POST') {
-    const pastArray = array.length;
-    array.push("1")
-    return response.send(`Era ${pastArray} mas agora é ${array.length}`);
-  }
-  response.statusCode = 200; 
-  response.send(array.length);
+interface fieldsData {
+    body: string,
+    description: string,
+    publishDate: string,
+    title: ""
+
+}
+
+const client = createClient({
+    space: 'cthqv4jheukp',
+    accessToken: 'oJcJEUN_KPUQWiap4WRAlveuHLGqMazIaIXy2YHZ1t8',
+})
+
+
+export async function contentSample() {
+    const {items} =  await client.getEntries();
+
+    const posts = items.map(i => i.fields);
+    return posts;
 }

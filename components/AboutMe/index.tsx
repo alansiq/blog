@@ -8,7 +8,7 @@ const AboutMe = () => {
     return (
         <>
             <div className={styles.AboutContainer}>
-                <SectionHeading
+                <SectionHeading 
                     number={1}
                     text="About me"
                 />
